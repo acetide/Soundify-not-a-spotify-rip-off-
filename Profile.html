@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f0e0e6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .profile-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-weight: bold;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            color: #333;
+        }
+
+        input, textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        button {
+            background-color: #ff69b4;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        button:hover {
+            background-color: #d6336c;
+        }
+
+        .profile-preview {
+            margin-top: 30px;
+        }
+
+        #preview-picture {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#submit-btn").click(function () {
+                var profilePicture = $("#profile-picture").val();
+                var email = $("#email").val();
+                var nickname = $("#nickname").val();
+                var about = $("#about").val();
+
+                var isConfirmed = confirm("Do you want to save the profile?");
+                
+                if (isConfirmed) {
+                    $("#preview-picture").attr("src", profilePicture);
+                    $("#preview-email").text(email);
+                    $("#preview-nickname").text(nickname);
+                    $("#preview-about").text(about);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+
+<div class="profile-container">
+    <h1><strong>My Profile</strong></h1>
+    <form id="profile-form">
+        <label for="profile-picture">Profile Picture:</label>
+        <input type="file" id="profile-picture-file" accept="image/*">
+        <p>or</p>
+        <input type="text" id="profile-picture-url" placeholder="URL of your profile picture">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Your email">
+
+        <label for="nickname">Nickname:</label>
+        <input type="text" id="nickname" placeholder="Your nickname">
+
+        <label for="about">About Me:</label>
+        <textarea id="about" placeholder="Write a paragraph about yourself"></textarea>
+
+        <button type="button" id="submit-btn">Save Profile</button>
+    </form>
+
+    <div class="profile-preview">
+        <h2>Preview</h2>
+        <img id="preview-picture" src="" alt="Profile Picture">
+        <p><strong>Email:</strong> <span id="preview-email"></span></p>
+        <p><strong>Nickname:</strong> <span id="preview-nickname"></span></p>
+        <p><strong>About Me:</strong></p>
+        <p id="preview-about"></p>
+    </div>
+</div>
+
+</body>
+</html>
